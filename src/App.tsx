@@ -18,6 +18,7 @@ export default function App() {
   const [homeData, setHomeData] = useState('')
   const [isClose, setIsClose] = useState(false)
   const [hasMore, setHasMore] = useState(false)
+  const [notFound, setNotFound] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
   const [page, setPage] = useState(1)
   const [select, setSelect] = useState('kl')
@@ -48,6 +49,10 @@ export default function App() {
     try{
       const res = await fetch(import.meta.env.VITE_URL + `job?key=${keyWord}&page=1&city=${city}`)
       const data = await res.json()
+      if (data.length === 0){
+        setHasMore(false)
+        setNotFound(true)
+      }
       setTimeout(()=> {button.current.disabled = false}, 2_500)
       setData(data)
       setIsLoading(false)
@@ -100,19 +105,24 @@ export default function App() {
           <span className='block w-full text-center text-[50px] font-black'>
             爬蟲中請稍後......
           </span> 
+          : 
+          notFound ?
+            <span className='block w-full text-center text-[20px] md:text-[35px] font-black text-[#f00]'>
+              找不到相關工作，請換其他關鍵字試試...
+            </span>
           :
-          <InfiniteScroll 
-            dataLength={data.length} 
-            next={()=> setPage(prev => prev += 1)}
-            hasMore={hasMore}
-            loader={
-              <span className='block text-[50px] text-center font-bold'>
-                爬蟲中請稍後......
-              </span>
-            } 
-          >
-            <Article data={data}/>
-          </InfiniteScroll>
+            <InfiniteScroll 
+              dataLength={data.length} 
+              next={()=> setPage(prev => prev += 1)}
+              hasMore={hasMore}
+              loader={
+                <span className='block text-[50px] text-center font-bold'>
+                  爬蟲中請稍後......
+                </span>
+              } 
+            >
+              <Article data={data}/>
+            </InfiniteScroll>
         }
       </section>
       { isClose ||
