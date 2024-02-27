@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef} from 'react'
 import Article from './components/Article'
+import Select from './components/Select'
 import InfiniteScroll from 'react-infinite-scroll-component'
 
 interface JobData{
@@ -19,9 +20,9 @@ export default function App() {
   const [hasMore, setHasMore] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
   const [page, setPage] = useState(1)
+  const [select, setSelect] = useState('')
   const text = useRef<HTMLInputElement>(null!)
   const button = useRef<HTMLButtonElement>(null!)
-  const select = useRef<HTMLSelectElement>(null!)
 
   const toTop = ()=> window.scrollTo(0,0)
 
@@ -37,10 +38,10 @@ export default function App() {
 
   const search = async()=>{
     setData([])
-    setHasMore(true)
-    const city = select.current.value
+    const city = select
     const keyWord = text.current.value.trim()
     if(keyWord === '') return
+    setHasMore(true)
     setIsClose(true)
     setIsLoading(true)
     button.current.disabled = true
@@ -56,7 +57,7 @@ export default function App() {
   }
   
   const getPageData = async(page: Number)=> {
-    const city = select.current.value
+    const city = select
     const keyWord = text.current.value.trim()
     if(keyWord === '') return
     try{
@@ -90,12 +91,7 @@ export default function App() {
       </span>
       <div className='w-full flex justify-center items-center'>
         <input ref={text} placeholder='請輸入工作名稱...'/>
-        <select ref={select} className='border-[5px] h-[60px] text-[20px] md:text-[24px] outline-none font-black mx-2 rounded-md border-[#000]'>
-          <option value="kl">基隆市</option>
-          <option value="tp">台北市</option>
-          <option value="xb">新北市</option>
-          <option value="ty">桃園市</option>
-        </select>
+        <Select  setSelect={setSelect}/>
         <button ref={button} onClick={search}>🔍</button>
       </div>
       <section className='mt-12'>
