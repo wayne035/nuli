@@ -15,6 +15,7 @@ export default function App() {
   const [data, setData] = useState([] as JobData[])
   const [homeData, setHomeData] = useState('')
   const [isClose, setIsClose] = useState(false)
+  const [hasMore, setHasMore] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
   const [page, setPage] = useState(1)
   const text = useRef<HTMLInputElement>(null!)
@@ -35,6 +36,7 @@ export default function App() {
 
   const search = async()=>{
     setData([])
+    setHasMore(true)
     const city = select.current.value
     const keyWord = text.current.value.trim()
     if(keyWord === '') return
@@ -59,6 +61,7 @@ export default function App() {
     try{
       const res = await fetch(import.meta.env.VITE_URL + `job?key=${keyWord}&page=${page}&city=${city}`)
       const data = await res.json()
+      if(data.length === 0) setHasMore(false)
       setData(pre=>[...pre, ...data])
     }catch(e){
       console.log((e as Error).message)
@@ -104,8 +107,12 @@ export default function App() {
           <InfiniteScroll 
             dataLength={data.length} 
             next={()=> setPage(prev => prev += 1)}
-            hasMore={true}
-            loader={<span></span>} 
+            hasMore={hasMore}
+            loader={
+              <span className='block text-[50px] text-center font-bold'>
+                爬蟲中請稍後......
+              </span>
+            } 
           >
             {data?.map((job: JobData)=>(
             <article key={crypto.randomUUID()} className='w-full flex justify-center flex-wrap'>
