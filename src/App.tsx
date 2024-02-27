@@ -20,7 +20,7 @@ export default function App() {
   const [hasMore, setHasMore] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
   const [page, setPage] = useState(1)
-  const [select, setSelect] = useState('')
+  const [select, setSelect] = useState('kl')
   const text = useRef<HTMLInputElement>(null!)
   const button = useRef<HTMLButtonElement>(null!)
 
