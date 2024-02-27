@@ -11,12 +11,14 @@ export default function Select({setSelect}:Props) {
   
   return (
     <select onChange={selectValue} className='border-[5px] h-[60px] text-[20px] md:text-[24px] outline-none font-black mx-2 rounded-md border-[#000]'>
-          <option value="kl">基隆市</option>
-          <option value="tp">台北市</option>
-          <option value="xb">新北市</option>
-          <option value="ty">桃園市</option>
-          <option value="hc">新竹縣市</option>
-          <option value="ml">苗栗縣</option>
+      <optgroup label="北部">
+        <option value="kl">基隆市</option>
+        <option value="tp">台北市</option>
+        <option value="xb">新北市</option>
+        <option value="ty">桃園市</option>
+        <option value="hc">新竹縣市</option>
+        <option value="ml">苗栗縣</option>
+      </optgroup>
     </select>
   )
 }

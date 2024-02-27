@@ -41,10 +41,15 @@ export default function App() {
     setData([])
     const city = select
     const keyWord = text.current.value.trim()
-    if(keyWord === '') return
-    setHasMore(true)
     setIsClose(true)
+    if(keyWord === ''){
+      setHasMore(false)
+      setNotFound(true)
+      return
+    }
+    setHasMore(true)
     setIsLoading(true)
+    setNotFound(false)
     button.current.disabled = true
     try{
       const res = await fetch(import.meta.env.VITE_URL + `job?key=${keyWord}&page=1&city=${city}`)
