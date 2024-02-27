@@ -15,6 +15,8 @@ export default function Select({setSelect}:Props) {
           <option value="tp">台北市</option>
           <option value="xb">新北市</option>
           <option value="ty">桃園市</option>
+          <option value="hc">新竹縣市</option>
+          <option value="ml">苗栗縣</option>
     </select>
   )
 }
