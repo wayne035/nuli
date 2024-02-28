@@ -21,8 +21,11 @@ h1 span{
   text-shadow: 7px 7px 0 #000;
 }
 button{
+  height: 50px;
+  width: 50px;
   background: #fff;
-  font-size: 40px;
+  font-size: 30px;
+  line-height: 30px;
   border: 5px solid #000;
   border-radius: 5px;
 }
@@ -51,8 +54,8 @@ input {
   background: transparent;
   font-size: 20px;
   padding: 10px;
-  height: 70px;
-  width: 180px;
+  height: 50px;
+  width: 160px;
   border-bottom: 5px solid #000;
 }
 input:focus{outline: none;}
