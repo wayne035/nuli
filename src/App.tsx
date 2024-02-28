@@ -107,7 +107,7 @@ export default function App() {
       <section className='mt-12'>
         {isClose || <p className='text-[20px] lg:text-[25px] font-black p-3 w-full sm:text-center'>{homeData}</p>}
         {isLoading ? 
-          <span className='block w-full text-center text-[50px] font-black'>
+          <span className='block w-full text-[30px] text-center md:text-[50px] font-black'>
             爬蟲中請稍後......
           </span> 
           : 
@@ -121,7 +121,7 @@ export default function App() {
               next={()=> setPage(prev => prev += 1)}
               hasMore={hasMore}
               loader={
-                <span className='block text-[50px] text-center font-bold'>
+                <span className='block text-[30px] md:text-[50px] text-center font-bold'>
                   爬蟲中請稍後......
                 </span>
               } 
