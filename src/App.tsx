@@ -115,7 +115,7 @@ export default function App() {
             <span className='block w-full text-center text-[20px] md:text-[35px] font-black text-[#f00]'>
               找不到相關工作，請換其他關鍵字試試...
             </span>
-          :
+            :
             <InfiniteScroll 
               dataLength={data.length} 
               next={()=> setPage(prev => prev += 1)}
