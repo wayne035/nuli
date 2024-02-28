@@ -10,7 +10,7 @@ export default function Select({setSelect}:Props) {
   }
   
   return (
-    <select onChange={selectValue} className='border-[5px] h-[50px] md:text-[18px] outline-none font-black mx-2 rounded-md border-[#000]'>
+    <select onChange={selectValue} className='border-[5px] h-[50px] md:text-[20px] outline-none font-black mx-2 rounded-md border-[#000]'>
       <optgroup label="北部">
         <option value="kl">基隆市</option>
         <option value="tp">台北市</option>
@@ -24,6 +24,11 @@ export default function Select({setSelect}:Props) {
         <option value="nt">南投縣</option>
         <option value="ch">彰化縣</option>
         <option value="yl">雲林縣</option>
+      </optgroup>
+      <optgroup label="東部">
+        <option value="yil">宜蘭縣</option>
+        <option value="hl">花蓮縣</option>
+        <option value="tt">台東縣</option>
       </optgroup>
     </select>
   )

@@ -54,11 +54,11 @@ export default function App() {
     try{
       const res = await fetch(import.meta.env.VITE_URL + `job?key=${keyWord}&page=1&city=${city}`)
       const data = await res.json()
+      setTimeout(()=> {button.current.disabled = false}, 2_500)
       if (data.length === 0){
         setHasMore(false)
         setNotFound(true)
       }
-      setTimeout(()=> {button.current.disabled = false}, 2_500)
       setData(data)
       setIsLoading(false)
     }catch(e){
