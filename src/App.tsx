@@ -10,7 +10,8 @@ interface JobData{
   link: string,
   name: string,
   title: string,
-  color: string
+  color: string,
+  pay: string
 }
 
 export default function App() {
@@ -104,7 +105,7 @@ export default function App() {
         <Select  setSelect={setSelect}/>
         <button ref={button} onClick={search}>🔍</button>
       </div>
-      <section className='mt-12'>
+      <section className='mt-10'>
         {isClose || <p className='text-[20px] lg:text-[25px] font-black p-3 w-full sm:text-center'>{homeData}</p>}
         {isLoading ? 
           <span className='block w-full text-[30px] text-center md:text-[50px] font-black'>
