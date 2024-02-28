@@ -30,6 +30,12 @@ export default function Select({setSelect}:Props) {
         <option value="hl">花蓮縣</option>
         <option value="tt">台東縣</option>
       </optgroup>
+      <optgroup label="南部">
+        <option value="cy">嘉義縣市</option>
+        <option value="tn">台南縣</option>
+        <option value="ks">高雄市</option>
+        <option value="pt">屏東縣</option>
+      </optgroup>
     </select>
   )
 }
