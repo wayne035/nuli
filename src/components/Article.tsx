@@ -31,7 +31,11 @@ export default function Article({data}:{data: JobData[]}) {
                 {job.pay}
               </p>
             </div>
-            <span className="cover">立即應徵...👆</span>
+            <div className="cover">
+              <span className="absolute right-2 bottom-4">
+                立即應徵...👆
+              </span>
+            </div>
           </a>
         </article>
       ))}

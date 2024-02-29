@@ -36,16 +36,12 @@ button:hover{
 .cover{
   position: absolute;
   font-size: 25px;
-  text-align: right;
-  line-height: 360px;
   left: 0;
-  padding: 20px;
   top: 100%;
-  display:block; 
   background: #f386eb43;
   width: 100%;
   height: 100%;
-  transition: .5s;
+  transition: .45s;
   color: #666;
 }
 #job-link:hover .cover{
